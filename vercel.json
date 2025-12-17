@@ -1,0 +1,19 @@
+{
+  "builds": [
+    {
+      "src": "frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist"
+      }
+    },
+    {
+      "src": "api/todos.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    { "src": "/api/todos", "dest": "/api/todos.js" },
+    { "src": "/(.*)", "dest": "/frontend/dist/$1" }
+  ]
+}   
