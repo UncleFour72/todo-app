@@ -1,17 +1,12 @@
 {
-  "builds": [
+  "rewrites": [
     {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "dist" }
+      "source": "/api/todos",
+      "destination": "/api/todos.js"
     },
     {
-      "src": "api/todos.js",
-      "use": "@vercel/node"
+      "source": "/(.*)",
+      "destination": "/frontend/dist/index.html"
     }
-  ],
-  "routes": [
-    { "src": "/api/todos", "dest": "/api/todos.js" },
-    { "src": "/(.*)", "dest": "/frontend/dist/index.html" }
   ]
 }
